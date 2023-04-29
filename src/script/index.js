@@ -1,6 +1,9 @@
 import Keyboard from './keyboard.js';
 
-console.log('scripts connected');
+const appElement = document.querySelector('#app');
+const keyboard = new Keyboard(appElement);
+keyboard.render();
 
-const keyboard = new Keyboard();
-console.log(keyboard);
+document.addEventListener('keydown', (e) => {
+  console.log(e.key);
+});
