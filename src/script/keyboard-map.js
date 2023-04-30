@@ -428,7 +428,7 @@ const KEYBOARD_SETTINGS = [
       ],
     },
     {
-      id: 'Meta',
+      id: 'MetaLeft',
       base: 'Meta',
       shift: 'Meta',
       layoutBase: 'Meta',
