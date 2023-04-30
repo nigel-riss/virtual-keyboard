@@ -26,6 +26,7 @@ class Keyboard {
 
   renderKey(keyOptions) {
     const {
+      id,
       base,
       extraClasses,
     } = keyOptions;
@@ -35,6 +36,7 @@ class Keyboard {
     return (
       `<button
         class="key ${extraClass}"
+        data-key="${id}"
       >
         ${base}
       </button>`
