@@ -16,7 +16,7 @@ textareaElement.className = 'textarea';
 textareaElement.rows = 6;
 wrapperElement.append(textareaElement);
 
-const keyboard = new Keyboard(wrapperElement);
+const keyboard = new Keyboard(wrapperElement, textareaElement);
 keyboard.render();
 
 const descriptionElement = document.createElement('p');

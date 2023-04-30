@@ -1,9 +1,11 @@
 import KEYBOARD_SETTINGS from './keyboard-map.js';
 
 class Keyboard {
-  constructor(parentElement) {
+  constructor(parentElement, textarea) {
     this.parentElement = parentElement;
+    this.textarea = textarea;
     this.isDefaultLayout = true;
+    this.keysDown = new Set();
 
     this.keyboardElement = document.createElement('div');
     this.keyboardElement.className = 'keyboard';
@@ -16,6 +18,8 @@ class Keyboard {
     document.addEventListener('keydown', (e) => {
       console.clear();
       console.log(e.code);
+      this.keysDown.add(e.code);
+      console.log(this.keysDown);
 
       this.render();
     });
@@ -23,6 +27,9 @@ class Keyboard {
     document.addEventListener('keyup', (e) => {
       console.clear();
       console.log(e.code);
+      this.keysDown.delete(e.code);
+
+      this.render();
     });
   }
 
@@ -38,6 +45,7 @@ class Keyboard {
     keyboardHTML = `<div class="keyboard__row">${keyboardHTML}</div>`;
 
     this.keyboardElement.innerHTML = keyboardHTML;
+    this.textarea.focus();
   }
 
   renderKey(keyOptions) {
@@ -47,7 +55,10 @@ class Keyboard {
       extraClasses,
     } = keyOptions;
 
-    const extraClass = extraClasses ? extraClasses.join(' ') : '';
+    let extraClass = extraClasses ? extraClasses.join(' ') : '';
+    if (this.keysDown.has(id)) {
+      extraClass += ' key--pressed';
+    }
 
     return (
       `<button

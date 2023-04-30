@@ -123,13 +123,9 @@ body {
   opacity: 0.75;
 }
 
-.key:active,
-.key--pressed {
-  /* typography */
-  color: #ffffff;
-
+.key:focus {
   /* visual */
-  background-color: #3677ff88;
+  outline: none;
 }
 
 .key--control {
@@ -159,7 +155,19 @@ body {
   flex-grow: 10;
 }
 
+.key:active,
+.key--pressed {
+  /* typography */
+  color: #ffffff;
+
+  /* visual */
+  background-color: #3677ff88;
+}
+
 .description {
+  /* box model */
+  margin-bottom: 0;
+
   /* typography */
   color: #666666;
   font-size: 0.85rem;
