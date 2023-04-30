@@ -5,6 +5,7 @@ class Keyboard {
     this.parentElement = parentElement;
     this.textarea = textarea;
     this.isDefaultLayout = true;
+    this.isCapsOn = false;
     this.keysDown = new Set();
 
     this.keyboardElement = document.createElement('div');
@@ -20,6 +21,9 @@ class Keyboard {
       console.log(e.code);
       this.keysDown.add(e.code);
       console.log(this.keysDown);
+      if (e.code === 'CapsLock') {
+        this.isCapsOn = !this.isCapsOn;
+      }
 
       this.render();
     });
@@ -52,12 +56,36 @@ class Keyboard {
     const {
       id,
       base,
+      shift,
+      isControlKey,
       extraClasses,
     } = keyOptions;
 
     let extraClass = extraClasses ? extraClasses.join(' ') : '';
+    if (isControlKey) {
+      extraClass += ' key--control';
+    }
     if (this.keysDown.has(id)) {
       extraClass += ' key--pressed';
+    }
+    if (id === 'CapsLock' && this.isCapsOn) {
+      extraClass += ' key--pressed';
+    }
+
+    let label;
+    switch (true) {
+      case (
+        this.keysDown.has('ShiftLeft')
+        || this.keysDown.has('ShiftRight')
+      ):
+        label = shift;
+        break;
+      case (this.isCapsOn && !isControlKey):
+        label = base.toUpperCase();
+        break;
+      default:
+        label = base;
+        break;
     }
 
     return (
@@ -65,7 +93,7 @@ class Keyboard {
         class="key ${extraClass}"
         data-key="${id}"
       >
-        ${base}
+        ${label}
       </button>`
     );
   }

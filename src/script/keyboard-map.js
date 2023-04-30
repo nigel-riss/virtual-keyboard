@@ -90,8 +90,8 @@ const KEYBOARD_SETTINGS = [
       shift: 'Backspace',
       layoutBase: 'Backspace',
       layoutShift: 'Backspace',
+      isControlKey: true,
       extraClasses: [
-        'key--control',
         'key--grow',
       ],
     },
@@ -103,8 +103,8 @@ const KEYBOARD_SETTINGS = [
       shift: 'Tab',
       layoutBase: 'Tab',
       layoutShift: 'Tab',
+      isControlKey: true,
       extraClasses: [
-        'key--control',
         'key--grow',
       ],
     },
@@ -205,8 +205,8 @@ const KEYBOARD_SETTINGS = [
       shift: 'Del',
       layoutBase: 'Del',
       layoutShift: 'Del',
+      isControlKey: true,
       extraClasses: [
-        'key--control',
         'key--grow',
       ],
     },
@@ -218,8 +218,8 @@ const KEYBOARD_SETTINGS = [
       shift: 'CapsLock',
       layoutBase: 'CapsLock',
       layoutShift: 'CapsLock',
+      isControlKey: true,
       extraClasses: [
-        'key--control',
         'key--grow',
       ],
     },
@@ -306,8 +306,8 @@ const KEYBOARD_SETTINGS = [
       shift: 'Enter',
       layoutBase: 'Enter',
       layoutShift: 'Enter',
+      isControlKey: true,
       extraClasses: [
-        'key--control',
         'key--grow',
       ],
     },
@@ -319,8 +319,8 @@ const KEYBOARD_SETTINGS = [
       shift: 'Shift',
       layoutBase: 'Shift',
       layoutShift: 'Shift',
+      isControlKey: true,
       extraClasses: [
-        'key--control',
         'key--grow',
       ],
     },
@@ -410,8 +410,8 @@ const KEYBOARD_SETTINGS = [
       shift: 'Shift',
       layoutBase: 'Shift',
       layoutShift: 'Shift',
+      isControlKey: true,
       extraClasses: [
-        'key--control',
         'key--grow',
       ],
     },
@@ -423,9 +423,7 @@ const KEYBOARD_SETTINGS = [
       shift: 'Ctrl',
       layoutBase: 'Ctrl',
       layoutShift: 'Ctrl',
-      extraClasses: [
-        'key--control',
-      ],
+      isControlKey: true,
     },
     {
       id: 'MetaLeft',
@@ -433,9 +431,7 @@ const KEYBOARD_SETTINGS = [
       shift: 'Meta',
       layoutBase: 'Meta',
       layoutShift: 'Meta',
-      extraClasses: [
-        'key--control',
-      ],
+      isControlKey: true,
     },
     {
       id: 'AltLeft',
@@ -443,9 +439,7 @@ const KEYBOARD_SETTINGS = [
       shift: 'Alt',
       layoutBase: 'Alt',
       layoutShift: 'Alt',
-      extraClasses: [
-        'key--control',
-      ],
+      isControlKey: true,
     },
     {
       id: 'Space',
@@ -463,9 +457,7 @@ const KEYBOARD_SETTINGS = [
       shift: 'Alt',
       layoutBase: 'Alt',
       layoutShift: 'Alt',
-      extraClasses: [
-        'key--control',
-      ],
+      isControlKey: true,
     },
     {
       id: 'ArrowLeft',
@@ -503,9 +495,7 @@ const KEYBOARD_SETTINGS = [
       shift: 'Ctrl',
       layoutBase: 'Ctrl',
       layoutShift: 'Ctrl',
-      extraClasses: [
-        'key--control',
-      ],
+      isControlKey: true,
     },
   ],
 ];
