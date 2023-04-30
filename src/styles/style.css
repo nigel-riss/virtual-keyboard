@@ -96,6 +96,9 @@ body {
 
 .key {
   /* box model */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex-basis: 2rem;
   height: 2rem;
   padding: 0.5rem;
@@ -135,6 +138,15 @@ body {
 
   /* visual */
   background-color: #22222288;
+}
+
+.key--arrow {
+  /* typography */
+  color: #ffffff;
+  font-size: 1.125em;
+
+  /* visual */
+  background-color: #e0130088;
 }
 
 .key--grow {

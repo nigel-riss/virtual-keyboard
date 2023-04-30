@@ -400,6 +400,9 @@ const KEYBOARD_SETTINGS = [
       shift: '↑',
       layoutBase: '↑',
       layoutShift: '↑',
+      extraClasses: [
+        'key--arrow',
+      ],
     },
     {
       id: 'ShiftRight',
@@ -470,6 +473,9 @@ const KEYBOARD_SETTINGS = [
       shift: '←',
       layoutBase: '←',
       layoutShift: '←',
+      extraClasses: [
+        'key--arrow',
+      ],
     },
     {
       id: 'ArrowDown',
@@ -477,6 +483,9 @@ const KEYBOARD_SETTINGS = [
       shift: '↓',
       layoutBase: '↓',
       layoutShift: '↓',
+      extraClasses: [
+        'key--arrow',
+      ],
     },
     {
       id: 'ArrowRight',
@@ -484,6 +493,9 @@ const KEYBOARD_SETTINGS = [
       shift: '→',
       layoutBase: '→',
       layoutShift: '→',
+      extraClasses: [
+        'key--arrow',
+      ],
     },
     {
       id: 'ControlRight',
