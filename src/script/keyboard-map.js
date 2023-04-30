@@ -199,6 +199,17 @@ const KEYBOARD = [
       layoutBase: '',
       layoutShift: '',
     },
+    {
+      id: 'Delete',
+      base: 'Del',
+      shift: 'Del',
+      layoutBase: 'Del',
+      layoutShift: 'Del',
+      extraClasses: [
+        'key--control',
+        'key--grow',
+      ],
+    },
   ],
   [
     {

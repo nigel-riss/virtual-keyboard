@@ -8,7 +8,7 @@ appElement.insertAdjacentElement('afterbegin', wrapperElement);
 
 const textareaElement = document.createElement('textarea');
 textareaElement.className = 'textarea';
-textareaElement.rows = 7;
+textareaElement.rows = 6;
 wrapperElement.append(textareaElement);
 
 const keyboard = new Keyboard(wrapperElement);
