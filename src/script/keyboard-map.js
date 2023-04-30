@@ -1,4 +1,4 @@
-const KEYBOARD = [
+const KEYBOARD_SETTINGS = [
   [
     {
       id: 'Backquote',
@@ -498,4 +498,4 @@ const KEYBOARD = [
   ],
 ];
 
-export default KEYBOARD;
+export default KEYBOARD_SETTINGS;

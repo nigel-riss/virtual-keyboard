@@ -23,7 +23,3 @@ const descriptionElement = document.createElement('p');
 descriptionElement.className = 'description';
 descriptionElement.innerHTML = 'The Keyboard was created on GNU Linux (Ubuntu 22.04) <br> Use left <em>&nbsp;Shift + Alt&nbsp;</em> to switch layout';
 wrapperElement.append(descriptionElement);
-
-document.addEventListener('keydown', (e) => {
-  console.log(e.code);
-});
