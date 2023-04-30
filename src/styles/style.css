@@ -1,4 +1,129 @@
+html {
+  /* typography */
+  font-size: 3vw;
+}
+
 body {
+  /* box model */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+
+  /* typography */
+  color: #222222;
+
   /* visual */
   background-image: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%);
+}
+
+.wrapper {
+  /* box model */
+  display: flex;
+  flex-direction: column;
+  width: 96vw;
+
+  margin: 0 auto;
+}
+
+.textarea {
+  /* box model */
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+
+  /* typography */
+  color: #222222;
+  font-size: 1rem;
+
+  /* border */
+  border: none;
+  border-radius: 0.5rem;
+
+  /* visual */
+  background-color: #ffffffee;
+
+  /* other */
+  resize: none;
+}
+
+.textarea:focus {
+  outline: none;
+}
+
+.keyboard {
+  /* box model */
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.keyboard__row {
+  /* box model */
+  display: flex;
+  gap: 0.5rem;
+}
+
+.key {
+  /* box model */
+  flex-basis: 2rem;
+  height: 2rem;
+  padding: 0.5rem;
+
+  /* typography */
+  font-size: 0.85rem;
+  font-weight: 400;
+
+  /* border */
+  border: none;
+  border-radius: 0.5rem;
+
+  /* visual */
+  appearance: none;
+  background-color: #ffffff88;
+  cursor: pointer;
+  transition: all 0.25s ease-out;
+}
+
+.key:hover {
+  /* visual */
+  opacity: 0.75;
+}
+
+.key:active,
+.key--pressed {
+  /* typography */
+  color: #ffffff;
+
+  /* visual */
+  background-color: #3677ff88;
+}
+
+.key--control {
+  /* typography */
+  color: #ffffff;
+
+  /* visual */
+  background-color: #22222288;
+}
+
+.key--grow {
+  /* box model */
+  flex-grow: 1;
+}
+
+.key--space {
+  /* box model */
+  flex-grow: 10;
+}
+
+@media (min-width: 1000px) {
+  html {
+    font-size: 2vw;
+  }
+
+  .wrapper {
+    width: 75vw;
+  }
 }

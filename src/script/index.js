@@ -1,9 +1,19 @@
 import Keyboard from './keyboard.js';
 
 const appElement = document.querySelector('#app');
-const keyboard = new Keyboard(appElement);
+
+const wrapperElement = document.createElement('main');
+wrapperElement.className = 'wrapper';
+appElement.insertAdjacentElement('afterbegin', wrapperElement);
+
+const textareaElement = document.createElement('textarea');
+textareaElement.className = 'textarea';
+textareaElement.rows = 7;
+wrapperElement.append(textareaElement);
+
+const keyboard = new Keyboard(wrapperElement);
 keyboard.render();
 
 document.addEventListener('keydown', (e) => {
-  console.log(e.key);
+  console.log(e.code);
 });

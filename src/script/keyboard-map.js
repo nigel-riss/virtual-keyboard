@@ -90,6 +90,10 @@ const KEYBOARD = [
       shift: 'Backspace',
       layoutBase: 'Backspace',
       layoutShift: 'Backspace',
+      extraClasses: [
+        'key--control',
+        'key--grow',
+      ],
     },
   ],
   [
@@ -99,6 +103,10 @@ const KEYBOARD = [
       shift: 'Tab',
       layoutBase: 'Tab',
       layoutShift: 'Tab',
+      extraClasses: [
+        'key--control',
+        'key--grow',
+      ],
     },
     {
       id: '',
@@ -199,6 +207,10 @@ const KEYBOARD = [
       shift: 'CapsLock',
       layoutBase: 'CapsLock',
       layoutShift: 'CapsLock',
+      extraClasses: [
+        'key--control',
+        'key--grow',
+      ],
     },
     {
       id: '',
@@ -283,6 +295,10 @@ const KEYBOARD = [
       shift: 'Enter',
       layoutBase: 'Enter',
       layoutShift: 'Enter',
+      extraClasses: [
+        'key--control',
+        'key--grow',
+      ],
     },
   ],
   [
@@ -292,6 +308,10 @@ const KEYBOARD = [
       shift: 'Shift',
       layoutBase: 'Shift',
       layoutShift: 'Shift',
+      extraClasses: [
+        'key--control',
+        'key--grow',
+      ],
     },
     {
       id: '',
@@ -365,10 +385,10 @@ const KEYBOARD = [
     },
     {
       id: '',
-      base: 'ArrowUp',
-      shift: 'ArrowUp',
-      layoutBase: 'ArrowUp',
-      layoutShift: 'ArrowUp',
+      base: '↑',
+      shift: '↑',
+      layoutBase: '↑',
+      layoutShift: '↑',
     },
     {
       id: '',
@@ -376,6 +396,10 @@ const KEYBOARD = [
       shift: 'Shift',
       layoutBase: 'Shift',
       layoutShift: 'Shift',
+      extraClasses: [
+        'key--control',
+        'key--grow',
+      ],
     },
   ],
   [
@@ -385,6 +409,9 @@ const KEYBOARD = [
       shift: 'Ctrl',
       layoutBase: 'Ctrl',
       layoutShift: 'Ctrl',
+      extraClasses: [
+        'key--control',
+      ],
     },
     {
       id: '',
@@ -392,6 +419,9 @@ const KEYBOARD = [
       shift: 'Meta',
       layoutBase: 'Meta',
       layoutShift: 'Meta',
+      extraClasses: [
+        'key--control',
+      ],
     },
     {
       id: '',
@@ -399,6 +429,9 @@ const KEYBOARD = [
       shift: 'Alt',
       layoutBase: 'Alt',
       layoutShift: 'Alt',
+      extraClasses: [
+        'key--control',
+      ],
     },
     {
       id: '',
@@ -406,6 +439,9 @@ const KEYBOARD = [
       shift: ' ',
       layoutBase: ' ',
       layoutShift: ' ',
+      extraClasses: [
+        'key--space',
+      ],
     },
     {
       id: '',
@@ -413,6 +449,30 @@ const KEYBOARD = [
       shift: 'Alt',
       layoutBase: 'Alt',
       layoutShift: 'Alt',
+      extraClasses: [
+        'key--control',
+      ],
+    },
+    {
+      id: 'ArrowLeft',
+      base: '←',
+      shift: '←',
+      layoutBase: '←',
+      layoutShift: '←',
+    },
+    {
+      id: 'ArrowDown',
+      base: '↓',
+      shift: '↓',
+      layoutBase: '↓',
+      layoutShift: '↓',
+    },
+    {
+      id: 'ArrowRight',
+      base: '→',
+      shift: '→',
+      layoutBase: '→',
+      layoutShift: '→',
     },
     {
       id: '',
@@ -420,27 +480,9 @@ const KEYBOARD = [
       shift: 'Ctrl',
       layoutBase: 'Ctrl',
       layoutShift: 'Ctrl',
-    },
-    {
-      id: '',
-      base: 'ArrowLeft',
-      shift: 'ArrowLeft',
-      layoutBase: 'ArrowLeft',
-      layoutShift: 'ArrowLeft',
-    },
-    {
-      id: '',
-      base: 'ArrowDown',
-      shift: 'ArrowDown',
-      layoutBase: 'ArrowDown',
-      layoutShift: 'ArrowDown',
-    },
-    {
-      id: '',
-      base: 'ArrowRight',
-      shift: 'ArrowRight',
-      layoutBase: 'ArrowRight',
-      layoutShift: 'ArrowRight',
+      extraClasses: [
+        'key--control',
+      ],
     },
   ],
 ];

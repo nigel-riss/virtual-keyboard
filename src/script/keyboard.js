@@ -4,6 +4,9 @@ class Keyboard {
   constructor(parentElement) {
     this.isDefaultLayout = true;
     this.parentElement = parentElement;
+
+    this.keyboardElement = document.createElement('div');
+    this.keyboardElement.className = 'keyboard';
   }
 
   render() {
@@ -13,15 +16,29 @@ class Keyboard {
           const newMarkup = markup + this.renderKey(key);
           return newMarkup;
         }, ''))
-      .join('</div><div>');
+      .join('</div><div class="keyboard__row">');
 
-    keyboardHTML = `<div>${keyboardHTML}</div>`;
+    keyboardHTML = `<div class="keyboard__row">${keyboardHTML}</div>`;
 
-    this.parentElement.insertAdjacentHTML('afterbegin', keyboardHTML);
+    this.keyboardElement.insertAdjacentHTML('afterbegin', keyboardHTML);
+    this.parentElement.append(this.keyboardElement);
   }
 
   renderKey(keyOptions) {
-    return `<button>${keyOptions.base}</button>`;
+    const {
+      base,
+      extraClasses,
+    } = keyOptions;
+
+    const extraClass = extraClasses ? extraClasses.join(' ') : '';
+
+    return (
+      `<button
+        class="key ${extraClass}"
+      >
+        ${base}
+      </button>`
+    );
   }
 }
 
