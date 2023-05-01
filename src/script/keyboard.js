@@ -7,6 +7,14 @@ class Keyboard {
     this.isDefaultLayout = true;
     this.isCapsOn = false;
     this.isShiftOn = false;
+
+    this.keys = {};
+    KEYBOARD_SETTINGS
+      .flat()
+      .forEach((keyOptions) => {
+        this.keys[keyOptions.id] = keyOptions;
+      });
+
     this.keysDown = new Set();
 
     this.keyboardElement = document.createElement('div');
@@ -35,6 +43,12 @@ class Keyboard {
       console.log(e.code);
       this.keysDown.delete(e.code);
 
+      if (e.code === 'AltLeft' && e.shiftKey) {
+        this.isDefaultLayout = !this.isDefaultLayout;
+      }
+
+      console.log('Default Layout:', this.isDefaultLayout);
+
       this.render();
       e.preventDefault();
     });
@@ -51,12 +65,22 @@ class Keyboard {
         case 'ShiftRight':
           this.isShiftOn = !this.isShiftOn;
           break;
+        case 'AltLeft':
+          if (this.isShiftOn) {
+            this.isDefaultLayout = !this.isDefaultLayout;
+          }
+          break;
         default:
-          this.isShiftOn = false;
           break;
       }
+
+      if (buttonCode !== 'ShiftLeft' && buttonCode !== 'ShiftRight') {
+        this.isShiftOn = false;
+      }
+
       this.render();
       console.log(buttonCode);
+      console.log('Default Layout:', this.isDefaultLayout);
     });
   }
 
@@ -77,8 +101,6 @@ class Keyboard {
   renderKey(keyOptions) {
     const {
       id,
-      base,
-      shift,
       isControlKey,
       extraClasses,
     } = keyOptions;
@@ -97,22 +119,7 @@ class Keyboard {
       extraClass += ' key--pressed';
     }
 
-    let label;
-    switch (true) {
-      case (
-        this.keysDown.has('ShiftLeft')
-        || this.keysDown.has('ShiftRight')
-        || this.isShiftOn
-      ):
-        label = shift;
-        break;
-      case (this.isCapsOn && !isControlKey):
-        label = base.toUpperCase();
-        break;
-      default:
-        label = base;
-        break;
-    }
+    const label = this.getKeyValue(id);
 
     return (
       `<button
@@ -122,6 +129,32 @@ class Keyboard {
         ${label}
       </button>`
     );
+  }
+
+  getKeyValue(keyId) {
+    const {
+      base,
+      shift,
+      layoutBase,
+      layoutShift,
+      isControlKey,
+    } = this.keys[keyId];
+
+    if (
+      this.keysDown.has('ShiftLeft')
+      || this.keysDown.has('ShiftRight')
+      || this.isShiftOn
+    ) {
+      return this.isDefaultLayout ? shift : layoutShift;
+    }
+
+    if (this.isCapsOn && !isControlKey) {
+      return this.isDefaultLayout
+        ? base.toUpperCase()
+        : layoutBase.toUpperCase();
+    }
+
+    return this.isDefaultLayout ? base : layoutBase;
   }
 }
 

@@ -21,5 +21,5 @@ keyboard.render();
 
 const descriptionElement = document.createElement('p');
 descriptionElement.className = 'description';
-descriptionElement.innerHTML = 'The Keyboard was created on GNU Linux (Ubuntu 22.04) <br> Use left <em>&nbsp;Shift + Alt&nbsp;</em> to switch layout';
+descriptionElement.innerHTML = 'The Keyboard was created on GNU Linux (Ubuntu 22.04) <br> Use <em>&nbsp;Shift + Left Alt&nbsp;</em> to switch layout';
 wrapperElement.append(descriptionElement);
