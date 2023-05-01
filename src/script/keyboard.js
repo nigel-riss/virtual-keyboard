@@ -4,9 +4,9 @@ import {
 } from './keyboard-map.js';
 
 class Keyboard {
-  constructor(parentElement) {
+  constructor(parentElement, isAltLayout) {
     this.parentElement = parentElement;
-    this.isDefaultLayout = true;
+    this.isAltLayout = !!isAltLayout;
     this.isCapsOn = false;
     this.isShiftOn = false;
     this.keysDown = new Set();
@@ -20,10 +20,7 @@ class Keyboard {
 
   addListeners() {
     document.addEventListener('keydown', (e) => {
-      console.clear();
-      console.log(e.code);
       this.keysDown.add(e.code);
-      console.log(this.keysDown);
       if (e.code === 'CapsLock') {
         this.isCapsOn = !this.isCapsOn;
       }
@@ -35,12 +32,10 @@ class Keyboard {
     });
 
     document.addEventListener('keyup', (e) => {
-      // console.clear();
-      console.log(e.code);
       this.keysDown.delete(e.code);
 
       if (e.code === 'AltLeft' && e.shiftKey) {
-        this.isDefaultLayout = !this.isDefaultLayout;
+        this.toggleLayout();
       }
 
       this.render();
@@ -61,7 +56,7 @@ class Keyboard {
           break;
         case 'AltLeft':
           if (this.isShiftOn) {
-            this.isDefaultLayout = !this.isDefaultLayout;
+            this.toggleLayout();
           }
           break;
         default:
@@ -74,7 +69,6 @@ class Keyboard {
       }
 
       this.render();
-      console.log(buttonCode);
     });
   }
 
@@ -139,16 +133,16 @@ class Keyboard {
       || this.keysDown.has('ShiftRight')
       || this.isShiftOn
     ) {
-      return this.isDefaultLayout ? shift : layoutShift;
+      return this.isAltLayout ? layoutShift : shift;
     }
 
     if (this.isCapsOn && !isControlKey) {
-      return this.isDefaultLayout
-        ? base.toUpperCase()
-        : layoutBase.toUpperCase();
+      return this.isAltLayout
+        ? layoutBase.toUpperCase()
+        : base.toUpperCase();
     }
 
-    return this.isDefaultLayout ? base : layoutBase;
+    return this.isAltLayout ? layoutBase : base;
   }
 
   dispatchEvent(keyId) {
@@ -158,6 +152,11 @@ class Keyboard {
     vKeyEvent.value = value;
     vKeyEvent.code = keyId;
     document.dispatchEvent(vKeyEvent);
+  }
+
+  toggleLayout() {
+    this.isAltLayout = !this.isAltLayout;
+    window.localStorage.setItem('virtual-keyboard', this.isAltLayout);
   }
 }
 

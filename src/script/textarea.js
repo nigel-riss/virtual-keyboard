@@ -21,7 +21,6 @@ class Textarea {
 
   addListeners() {
     document.addEventListener('vKeyPress', (e) => {
-      console.log('Got event', e.value);
       if (!KEYS[e.code].isControlKey) {
         this.insertText(e.value);
       } else {
@@ -47,7 +46,6 @@ class Textarea {
 
     this.textarea.addEventListener('click', () => {
       this.cursorPosition = this.textarea.selectionStart;
-      console.log(this.cursorPosition);
     });
   }
 

@@ -15,7 +15,8 @@ wrapperElement.append(titleElement);
 const textarea = new Textarea(wrapperElement);
 textarea.render();
 
-const keyboard = new Keyboard(wrapperElement);
+const isAltLayout = window.localStorage.getItem('virtual-keyboard');
+const keyboard = new Keyboard(wrapperElement, JSON.parse(isAltLayout));
 keyboard.render();
 
 const descriptionElement = document.createElement('p');
