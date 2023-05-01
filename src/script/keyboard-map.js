@@ -1,4 +1,4 @@
-const KEYBOARD = [
+const KEYBOARD_SETTINGS = [
   [
     {
       id: 'Backquote',
@@ -90,8 +90,8 @@ const KEYBOARD = [
       shift: 'Backspace',
       layoutBase: 'Backspace',
       layoutShift: 'Backspace',
+      isControlKey: true,
       extraClasses: [
-        'key--control',
         'key--grow',
       ],
     },
@@ -103,8 +103,8 @@ const KEYBOARD = [
       shift: 'Tab',
       layoutBase: 'Tab',
       layoutShift: 'Tab',
+      isControlKey: true,
       extraClasses: [
-        'key--control',
         'key--grow',
       ],
     },
@@ -205,8 +205,8 @@ const KEYBOARD = [
       shift: 'Del',
       layoutBase: 'Del',
       layoutShift: 'Del',
+      isControlKey: true,
       extraClasses: [
-        'key--control',
         'key--grow',
       ],
     },
@@ -218,8 +218,8 @@ const KEYBOARD = [
       shift: 'CapsLock',
       layoutBase: 'CapsLock',
       layoutShift: 'CapsLock',
+      isControlKey: true,
       extraClasses: [
-        'key--control',
         'key--grow',
       ],
     },
@@ -306,8 +306,8 @@ const KEYBOARD = [
       shift: 'Enter',
       layoutBase: 'Enter',
       layoutShift: 'Enter',
+      isControlKey: true,
       extraClasses: [
-        'key--control',
         'key--grow',
       ],
     },
@@ -319,8 +319,8 @@ const KEYBOARD = [
       shift: 'Shift',
       layoutBase: 'Shift',
       layoutShift: 'Shift',
+      isControlKey: true,
       extraClasses: [
-        'key--control',
         'key--grow',
       ],
     },
@@ -400,6 +400,9 @@ const KEYBOARD = [
       shift: '↑',
       layoutBase: '↑',
       layoutShift: '↑',
+      extraClasses: [
+        'key--arrow',
+      ],
     },
     {
       id: 'ShiftRight',
@@ -407,8 +410,8 @@ const KEYBOARD = [
       shift: 'Shift',
       layoutBase: 'Shift',
       layoutShift: 'Shift',
+      isControlKey: true,
       extraClasses: [
-        'key--control',
         'key--grow',
       ],
     },
@@ -420,19 +423,15 @@ const KEYBOARD = [
       shift: 'Ctrl',
       layoutBase: 'Ctrl',
       layoutShift: 'Ctrl',
-      extraClasses: [
-        'key--control',
-      ],
+      isControlKey: true,
     },
     {
-      id: 'Meta',
+      id: 'MetaLeft',
       base: 'Meta',
       shift: 'Meta',
       layoutBase: 'Meta',
       layoutShift: 'Meta',
-      extraClasses: [
-        'key--control',
-      ],
+      isControlKey: true,
     },
     {
       id: 'AltLeft',
@@ -440,9 +439,7 @@ const KEYBOARD = [
       shift: 'Alt',
       layoutBase: 'Alt',
       layoutShift: 'Alt',
-      extraClasses: [
-        'key--control',
-      ],
+      isControlKey: true,
     },
     {
       id: 'Space',
@@ -460,9 +457,7 @@ const KEYBOARD = [
       shift: 'Alt',
       layoutBase: 'Alt',
       layoutShift: 'Alt',
-      extraClasses: [
-        'key--control',
-      ],
+      isControlKey: true,
     },
     {
       id: 'ArrowLeft',
@@ -470,6 +465,9 @@ const KEYBOARD = [
       shift: '←',
       layoutBase: '←',
       layoutShift: '←',
+      extraClasses: [
+        'key--arrow',
+      ],
     },
     {
       id: 'ArrowDown',
@@ -477,6 +475,9 @@ const KEYBOARD = [
       shift: '↓',
       layoutBase: '↓',
       layoutShift: '↓',
+      extraClasses: [
+        'key--arrow',
+      ],
     },
     {
       id: 'ArrowRight',
@@ -484,6 +485,9 @@ const KEYBOARD = [
       shift: '→',
       layoutBase: '→',
       layoutShift: '→',
+      extraClasses: [
+        'key--arrow',
+      ],
     },
     {
       id: 'ControlRight',
@@ -491,11 +495,19 @@ const KEYBOARD = [
       shift: 'Ctrl',
       layoutBase: 'Ctrl',
       layoutShift: 'Ctrl',
-      extraClasses: [
-        'key--control',
-      ],
+      isControlKey: true,
     },
   ],
 ];
 
-export default KEYBOARD;
+const KEYS = {};
+KEYBOARD_SETTINGS
+  .flat()
+  .forEach((keyOptions) => {
+    KEYS[keyOptions.id] = keyOptions;
+  });
+
+export {
+  KEYBOARD_SETTINGS,
+  KEYS,
+};
