@@ -1,5 +1,10 @@
 import { KEYS } from './keyboard-map.js';
 
+const direction = {
+  DELETE: 1,
+  BACKSPACE: -1,
+};
+
 class Textarea {
   constructor(parentElement) {
     this.parentElement = parentElement;
@@ -19,8 +24,24 @@ class Textarea {
       console.log('Got event', e.value);
       if (!KEYS[e.code].isControlKey) {
         this.insertText(e.value);
-        this.cursorPosition += 1;
-        this.render();
+      } else {
+        switch (e.code) {
+          case 'Enter':
+            this.insertText('\n');
+            break;
+          case 'Tab':
+            this.insertText('\t');
+            break;
+          // case 'Backspace':
+          //   this.deleteText(direction.BACKSPACE);
+          //   break;
+          // case 'Delete':
+          //   this.deleteText(direction.DELETE);
+            // break;
+
+          default:
+            break;
+        }
       }
     });
 
@@ -36,10 +57,28 @@ class Textarea {
     const before = this.value.slice(0, this.textarea.selectionStart);
     const after = this.value.slice(this.textarea.selectionEnd, this.value.length);
     this.value = before + text + after;
+    this.cursorPosition += 1;
+    this.render();
+    console.log(this.value);
   }
 
+  // deleteText(direction) {
+  //   let before;
+  //   let after;
+  //   if (this.textarea.selectionStart !== this.textarea.selectionEnd) {
+  //     before = this.value.slice(0, this.textarea.selectionStart);
+  //     after = this.value.slice(this.textarea.selectionEnd + 1, this.value.length);
+  //   } else {
+
+  //   }
+
+  //   this.value = before + after;
+  //   // this.cursorPosition
+  //   this.render();
+  // }
+
   render() {
-    this.textarea.innerText = this.value;
+    this.textarea.textContent = this.value;
     this.textarea.focus();
     this.textarea.selectionStart = this.cursorPosition;
   }
