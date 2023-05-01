@@ -6,6 +6,7 @@ class Keyboard {
     this.textarea = textarea;
     this.isDefaultLayout = true;
     this.isCapsOn = false;
+    this.isShiftOn = false;
     this.keysDown = new Set();
 
     this.keyboardElement = document.createElement('div');
@@ -26,6 +27,7 @@ class Keyboard {
       }
 
       this.render();
+      e.preventDefault();
     });
 
     document.addEventListener('keyup', (e) => {
@@ -34,6 +36,27 @@ class Keyboard {
       this.keysDown.delete(e.code);
 
       this.render();
+      e.preventDefault();
+    });
+
+    this.keyboardElement.addEventListener('click', (e) => {
+      const buttonCode = e.target.dataset.key;
+      if (!buttonCode) { return; }
+
+      switch (buttonCode) {
+        case 'CapsLock':
+          this.isCapsOn = !this.isCapsOn;
+          break;
+        case 'ShiftLeft':
+        case 'ShiftRight':
+          this.isShiftOn = !this.isShiftOn;
+          break;
+        default:
+          this.isShiftOn = false;
+          break;
+      }
+      this.render();
+      console.log(buttonCode);
     });
   }
 
@@ -49,7 +72,6 @@ class Keyboard {
     keyboardHTML = `<div class="keyboard__row">${keyboardHTML}</div>`;
 
     this.keyboardElement.innerHTML = keyboardHTML;
-    this.textarea.focus();
   }
 
   renderKey(keyOptions) {
@@ -71,12 +93,16 @@ class Keyboard {
     if (id === 'CapsLock' && this.isCapsOn) {
       extraClass += ' key--pressed';
     }
+    if ((id === 'ShiftLeft' || id === 'ShiftRight') && this.isShiftOn) {
+      extraClass += ' key--pressed';
+    }
 
     let label;
     switch (true) {
       case (
         this.keysDown.has('ShiftLeft')
         || this.keysDown.has('ShiftRight')
+        || this.isShiftOn
       ):
         label = shift;
         break;
