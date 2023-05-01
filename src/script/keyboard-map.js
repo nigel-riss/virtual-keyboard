@@ -500,4 +500,14 @@ const KEYBOARD_SETTINGS = [
   ],
 ];
 
-export default KEYBOARD_SETTINGS;
+const KEYS = {};
+KEYBOARD_SETTINGS
+  .flat()
+  .forEach((keyOptions) => {
+    KEYS[keyOptions.id] = keyOptions;
+  });
+
+export {
+  KEYBOARD_SETTINGS,
+  KEYS,
+};

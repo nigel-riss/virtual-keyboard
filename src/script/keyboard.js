@@ -1,20 +1,14 @@
-import KEYBOARD_SETTINGS from './keyboard-map.js';
+import {
+  KEYBOARD_SETTINGS,
+  KEYS,
+} from './keyboard-map.js';
 
 class Keyboard {
-  constructor(parentElement, textarea) {
+  constructor(parentElement) {
     this.parentElement = parentElement;
-    this.textarea = textarea;
     this.isDefaultLayout = true;
     this.isCapsOn = false;
     this.isShiftOn = false;
-
-    this.keys = {};
-    KEYBOARD_SETTINGS
-      .flat()
-      .forEach((keyOptions) => {
-        this.keys[keyOptions.id] = keyOptions;
-      });
-
     this.keysDown = new Set();
 
     this.keyboardElement = document.createElement('div');
@@ -39,15 +33,13 @@ class Keyboard {
     });
 
     document.addEventListener('keyup', (e) => {
-      console.clear();
+      // console.clear();
       console.log(e.code);
       this.keysDown.delete(e.code);
 
       if (e.code === 'AltLeft' && e.shiftKey) {
         this.isDefaultLayout = !this.isDefaultLayout;
       }
-
-      console.log('Default Layout:', this.isDefaultLayout);
 
       this.render();
       e.preventDefault();
@@ -80,7 +72,6 @@ class Keyboard {
 
       this.render();
       console.log(buttonCode);
-      console.log('Default Layout:', this.isDefaultLayout);
     });
   }
 
@@ -138,7 +129,7 @@ class Keyboard {
       layoutBase,
       layoutShift,
       isControlKey,
-    } = this.keys[keyId];
+    } = KEYS[keyId];
 
     if (
       this.keysDown.has('ShiftLeft')

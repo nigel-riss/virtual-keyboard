@@ -1,4 +1,5 @@
 import Keyboard from './keyboard.js';
+import Textarea from './textarea.js';
 
 const appElement = document.querySelector('#app');
 
@@ -11,12 +12,10 @@ titleElement.className = 'title';
 titleElement.innerHTML = 'Virtual <em>Keyboard</em>';
 wrapperElement.append(titleElement);
 
-const textareaElement = document.createElement('textarea');
-textareaElement.className = 'textarea';
-textareaElement.rows = 6;
-wrapperElement.append(textareaElement);
+const textarea = new Textarea(wrapperElement);
+textarea.render();
 
-const keyboard = new Keyboard(wrapperElement, textareaElement);
+const keyboard = new Keyboard(wrapperElement);
 keyboard.render();
 
 const descriptionElement = document.createElement('p');
