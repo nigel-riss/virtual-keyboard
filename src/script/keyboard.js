@@ -28,6 +28,8 @@ class Keyboard {
         this.isCapsOn = !this.isCapsOn;
       }
 
+      this.dispatchEvent(e.code);
+
       this.render();
       e.preventDefault();
     });
@@ -63,6 +65,7 @@ class Keyboard {
           }
           break;
         default:
+          this.dispatchEvent(buttonCode);
           break;
       }
 
@@ -146,6 +149,15 @@ class Keyboard {
     }
 
     return this.isDefaultLayout ? base : layoutBase;
+  }
+
+  dispatchEvent(keyId) {
+    if (!KEYS[keyId]) { return; }
+    const value = this.getKeyValue(keyId);
+    const vKeyEvent = new Event('vKeyPress');
+    vKeyEvent.value = value;
+    vKeyEvent.code = keyId;
+    document.dispatchEvent(vKeyEvent);
   }
 }
 
