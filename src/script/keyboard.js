@@ -6,7 +6,6 @@ import {
 class Keyboard {
   constructor(parentElement, isAltLayout) {
     this.parentElement = parentElement;
-    console.log('def', isAltLayout, typeof isAltLayout);
     this.isAltLayout = !!isAltLayout;
     this.isCapsOn = false;
     this.isShiftOn = false;
@@ -158,7 +157,6 @@ class Keyboard {
   toggleLayout() {
     this.isAltLayout = !this.isAltLayout;
     window.localStorage.setItem('virtual-keyboard', this.isAltLayout);
-    console.log(window.localStorage.getItem('virtual-keyboard'));
   }
 }
 
