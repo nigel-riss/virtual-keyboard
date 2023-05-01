@@ -32,12 +32,12 @@ class Textarea {
           case 'Tab':
             this.insertText('\t');
             break;
-          // case 'Backspace':
-          //   this.deleteText(direction.BACKSPACE);
-          //   break;
-          // case 'Delete':
-          //   this.deleteText(direction.DELETE);
-            // break;
+          case 'Backspace':
+            this.deleteText(direction.BACKSPACE);
+            break;
+          case 'Delete':
+            this.deleteText(direction.DELETE);
+            break;
 
           default:
             break;
@@ -52,30 +52,29 @@ class Textarea {
   }
 
   insertText(text) {
-    // const before = this.value.slice(0, this.cursorPosition);
-    // const after = this.value.slice(this.cursorPosition, this.value.length);
     const before = this.value.slice(0, this.textarea.selectionStart);
     const after = this.value.slice(this.textarea.selectionEnd, this.value.length);
     this.value = before + text + after;
     this.cursorPosition += 1;
     this.render();
-    console.log(this.value);
   }
 
-  // deleteText(direction) {
-  //   let before;
-  //   let after;
-  //   if (this.textarea.selectionStart !== this.textarea.selectionEnd) {
-  //     before = this.value.slice(0, this.textarea.selectionStart);
-  //     after = this.value.slice(this.textarea.selectionEnd + 1, this.value.length);
-  //   } else {
+  deleteText(delDirection) {
+    let before;
+    let after;
+    if (delDirection === direction.BACKSPACE) {
+      before = this.value.slice(0, this.cursorPosition - 1);
+      after = this.value.slice(this.cursorPosition, this.value.length);
+      this.cursorPosition -= 1;
+    }
+    if (delDirection === direction.DELETE) {
+      before = this.value.slice(0, this.cursorPosition);
+      after = this.value.slice(this.cursorPosition + 1, this.value.length);
+    }
 
-  //   }
-
-  //   this.value = before + after;
-  //   // this.cursorPosition
-  //   this.render();
-  // }
+    this.value = before + after;
+    this.render();
+  }
 
   render() {
     this.textarea.textContent = this.value;
